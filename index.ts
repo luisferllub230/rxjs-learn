@@ -370,35 +370,47 @@ import './style.css';
 
 // operador de aplanamiento = nos suscribe internamente a un operador y nos regresa en la misma cadena la respuesta
 
+// import {
+//   fromEvent,
+//   pluck,
+//   debounceTime,
+//   distinctUntilChanged,
+//   map,
+// } from 'rxjs';
+
+// const body = document.querySelector('body');
+// const input = document.createElement('input');
+// const ol = document.createElement('ol');
+
+// body.append(input);
+// const keyInput$ = fromEvent<InputEvent>(input, 'input');
+
+// keyInput$
+//   .pipe(
+//     debounceTime(500),
+//     pluck('target', 'value'),
+//     distinctUntilChanged(),
+//     map((value) => {
+//       return ajax.getJSON(`https://api.github.com/users/${value}`);
+//     })
+//   )
+//   .subscribe((resp) => {
+//     resp.subscribe(console.log);
+//   });
+
 /**
- *
+ * operador concatMap
+ * concatMap = el operador concatMap a va creando lineas de tiempo segun los observable pero las segunda linea de tiempo no se ejecutara hasta que la linea de tiempo(observable) anterior se termine.
  */
 
-import {
-  fromEvent,
-  pluck,
-  debounceTime,
-  distinctUntilChanged,
-  map,
-} from 'rxjs';
+// import { fromEvent, interval, take, concatMap } from 'rxjs';
 
-const body = document.querySelector('body');
-const input = document.createElement('input');
-const ol = document.createElement('ol');
+// const interval$ = interval(500).pipe(take(3));
+// const click = fromEvent(document, 'click')
+//   .pipe(concatMap(() => interval$))
+//   .subscribe(console.log);
 
-body.append(input);
-
-const keyInput$ = fromEvent<InputEvent>(input, 'input');
-
-keyInput$
-  .pipe(
-    debounceTime(500),
-    pluck('target', 'value'),
-    distinctUntilChanged(),
-    map((value) => {
-      return ajax.getJSON(`https://api.github.com/users/${value}`);
-    })
-  )
-  .subscribe((resp) => {
-    resp.subscribe(console.log);
-  });
+/**
+ * operador exhaustMap
+ * exhaustMap =  
+ */
