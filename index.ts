@@ -1,10 +1,18 @@
 import './style.css';
 
 /**
- * operador startWith
- * startWith este operador comienza con el valor que se le ponga
+ * metodo merge
+ * merge nos permiter unir varios observalbes
  */
 
-import { startWith, of } from 'rxjs';
-const ofNumber = of(1, 2, 3);
-ofNumber.pipe(startWith(7)).subscribe(console.log);
+import { interval, merge, take } from 'rxjs';
+
+const interval1$ = interval(1000);
+const interval2$ = interval(1000);
+const interval3$ = interval(1000);
+
+merge(
+  interval1$.pipe(take(3)),
+  interval2$.pipe(take(2)),
+  interval3$.pipe(take(1))
+).subscribe(console.log);
