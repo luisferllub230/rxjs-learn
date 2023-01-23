@@ -1,24 +1,13 @@
 import './style.css';
+import { filter, from, last, map } from 'rxjs';
 
-const nombres = [
-  'batman',
-  'joker',
-  'doble cara',
-  'pingüino',
-  'hiedra venenosa',
-];
+const datos = [1, 2, 'foo', 3, 5, 6, 'bar', 7, 8];
+let container = 0;
 
-const capitalizar = (nombre: string) =>
-  nombre.replace(
-    /\w\S*/g,
-    (txt) => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase()
-  );
-
-// Cambiar este FOR OF, por un observable y capitalizar las emisiones
-// for (let nombre of nombres) {
-//   console.log(capitalizar(nombre));
-// }
-
-import { from, map } from 'rxjs';
-
-from(nombres).pipe(map(capitalizar)).subscribe(console.log);
+from(datos)
+  .pipe(
+    filter<any>((num) => (isNaN(num) ? 0 : num)),
+    map((num) => (container += num)),
+    last()
+  )
+  .subscribe(console.log); // La salida debe de ser 32
