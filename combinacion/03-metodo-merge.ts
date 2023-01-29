@@ -12,4 +12,4 @@
  merge(
    interval1$.pipe(take(3)),
    interval2$.pipe(take(2)),
-   interval3$.pipe(take(1))
+   interval3$.pipe(take(1)));

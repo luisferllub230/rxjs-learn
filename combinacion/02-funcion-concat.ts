@@ -1,6 +1,6 @@
 /**
  * funcion concat
- * concat nos permiter uner varios observalbes y hasta que el primero se completo los demas observables no se emitiran
+ * concat nos permiter unir varios observalbes y hasta que el primero se completo los demas observables no se emitiran
  */
 
 import { interval, concat, take } from 'rxjs';
